@@ -1,0 +1,76 @@
+#accordion01 .accordion-button:not(.collapsed),
+#stages01 .accordion-button:not(.collapsed) {
+    color: var(--main);
+    background-color: var(--secondary);
+    box-shadow: none;
+}
+
+.accordion {
+    --bs-accordion-btn-focus-border-color: none;
+}
+
+@media screen and (min-width: 1140px) {
+
+    #accordion01 .accordion-header {
+        display: grid !important;
+        grid-template-columns: 85% 15% !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        cursor: pointer;
+        z-index: 10 !important;
+    }
+
+    #accordion01 .accordion-header {
+        padding: 0px 5px;
+        border: 1px solid var(--input-border);
+        border-radius: 2px;
+    }
+
+    /* #accordion01 .accordion:first-of-type .accordion-header {
+        border-radius: 5px 5px 0px 0px; 
+    } */
+
+}
+
+@media screen and (min-width: 767px) and (max-width: 1140px) {
+
+    #accordion01 .accordion-header {
+        display: grid !important;
+        grid-template-columns: 75% 25% !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        cursor: pointer;
+        z-index: 10 !important;
+    }
+
+    #accordion01 .accordion-header {
+        padding: 5px;
+        border: 1px solid var(--input-border);
+        border-radius: 2px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    #accordion01 .accordion-header {
+        display: grid !important;
+        grid-template-columns: 50% 50%;
+        align-items: center !important;
+        justify-content: space-between !important;
+        cursor: pointer;
+        z-index: 10 !important;
+    }
+
+    #accordion01 .accordion-header {
+        padding: 2px;
+        border: 1px solid var(--input-border);
+        border-radius: 2px;
+    }
+
+    #accordion01 .listbtn {
+        font-size: 10px !important;
+        padding: 5px 20px;
+    }
+
+}

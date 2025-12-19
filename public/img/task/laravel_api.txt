@@ -1,0 +1,47 @@
+step-1 
+composer require laravel/sanctum
+
+step-2
+
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+
+step-3
+
+Sanctum uses the personal_access_tokens table to manage API tokens. Run the migration:
+
+php artisan migrate
+
+step-4
+
+In app/Models/User.php (or Employee.php if you're using that model):
+
+use Laravel\Sanctum\HasApiTokens;
+
+class Employee extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+}
+
+
+step-5
+
+route/api.php......
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::post('/logout', [AuthController::class, 'api_logout']);
+
+step-6
+
+$token = $user->createToken('MyApp')->plainTextToken;
+return response()->json(['token' => $token]);
+
+step-7
+
+Authorization: Bearer YOUR_API_TOKEN fill teh ebare token in postman authorization tab 

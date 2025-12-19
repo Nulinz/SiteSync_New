@@ -1,0 +1,223 @@
+.modal {
+    --bs-modal-padding: 0rem 1rem 1rem 1rem;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 10px;
+    cursor: pointer;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    border: 3px solid #f4f4f4;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--main);
+}
+
+.modal-content {
+    background-color: var(--secondary) !important;
+}
+
+.form-control,
+.form-select {
+    background-color: var(--input-bg) !important;
+}
+
+.modal .usericon {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 8px;
+    height: 40px;
+    width: 40px;
+}
+
+.modal .usericon i {
+    color: var(--main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal h4 {
+    color: var(--primary);
+    font-weight: var(--fw-xl);
+    font-size: 18px;
+}
+
+.modal label {
+    color: var(--label);
+    font-size: 13px;
+    font-weight: var(--fw-md);
+}
+
+.modal ul li {
+    color: var(--label);
+    font-size: 13px;
+    font-weight: var(--fw-sm);
+    list-style-type: square;
+}
+
+.modal ul li.completed {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: var(--fw-sm);
+}
+
+.modal .col-form-label {
+    padding-bottom: 5px !important;
+}
+
+.modal input,
+.modal textarea,
+.modal select,
+.modal .checkdrp {
+    border: 1px solid var(--input-border);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: var(--fw-md);
+}
+
+.modal select option {
+    font-size: 12px;
+    font-weight: var(--fw-md);
+}
+
+.modal .col-sm-12 h6 {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: var(--fw-md);
+}
+
+.modal .table td,
+.modal .table th {
+    padding: 5px 5px;
+    background-color: transparent !important;
+    font-size: 13px;
+}
+
+.modal .table th {
+    color: var(--label);
+    font-weight: var(--fw-xl);
+    text-transform: uppercase;
+}
+
+.tble-dpd .checkdrp {
+    font-size: 13px !important;
+    padding: 5px !important;
+}
+
+.form-div .row .dropdown-menu,
+.tble-dpd .dropdown-menu {
+    color: var(--primary);
+    border: 1px solid var(--input-border);
+}
+
+.dropdown-menu label {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    color: var(--main) !important;
+}
+
+/* jQuery Toastr */
+#toast-container > div {
+    opacity: 1 !important;
+}
+
+.toast-success {
+    background-color: var(--main) !important;
+    color: var(--secondary) !important;
+}
+
+/* File Upload */
+.custom-file-upload {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #cacaca;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+}
+
+.custom-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-file-upload .icon svg,
+.custom-file-upload .icon img {
+    /* height: 35px; */
+    fill: var(--label);
+}
+
+.custom-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-file-upload .text span {
+    font-size: 12px;
+    font-weight: var(--fw-sm);
+    color: var(--label);
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.custom-file-upload input {
+    display: none;
+}
+
+.modal .imagepreview {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Notification / Role Popup */
+@media screen and (min-width: 1098px) {
+    .sideinput {
+        display: grid;
+        grid-template-columns: 40% 50%;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1098px) {
+    .sideinput {
+        display: grid;
+        grid-template-columns: 35% 55%;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .modal #snag div {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: start !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+}

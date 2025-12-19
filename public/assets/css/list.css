@@ -1,0 +1,418 @@
+.table-wrapper::-webkit-scrollbar,
+.dataTables_wrapper::-webkit-scrollbar {
+    display: none !important;
+}
+
+.table>:not(caption)>*>* {
+    background-color: transparent !important;
+}
+
+.table tbody tr {
+    background-color: var(--trow-bg) !important;
+    cursor: pointer;
+}
+
+table.dataTable>thead .sorting:after,
+table.dataTable>thead .sorting:before {
+    display: none !important;
+}
+
+table .form-select,
+table .form-control {
+    background-color: var(--secondary);
+}
+
+table.dataTable {
+    margin: 10px 0px !important;
+}
+
+.table thead {
+    background-color: var(--thead-bg);
+}
+
+.table tbody td img {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+/* Progress Bar */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.linear-progress {
+    position: relative;
+    width: 80%;
+    height: 5px;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    position: absolute;
+    height: 100%;
+    background-color: #5577FF;
+    border-radius: 5px;
+}
+
+.progress-value {
+    font-size: 12px;
+    font-weight: var(--fw-md);
+    color: var(--tdata);
+    text-align: center;
+}
+
+@media screen and (min-width: 1140px) {
+
+    /* List */
+    .listtable {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        border: 1px solid var(--border);
+    }
+
+    .filter-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .filter-container-start {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .filter-container-start select {
+        width: 20%;
+        color: var(--primary);
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    .filter-container-start input {
+        width: 50%;
+        color: var(--primary);
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 0px 5px 5px 0px;
+    }
+
+    .filter-container-end {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .dataTables_wrapper {
+        width: 100% !important;
+        overflow: auto;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .table thead th,
+    .table tbody th {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: var(--fw-lg);
+        text-transform: uppercase;
+    }
+
+    .table tbody td,
+    .table tfoot td {
+        color: var(--tdata);
+        font-size: 12px;
+        font-weight: var(--fw-sm);
+        padding: 15px auto;
+    }
+
+    .table tbody td i {
+        color: var(--primary);
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .table select,
+    .table input {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .page-link {
+        font-size: 10px;
+        color: var(--main);
+    }
+
+    .active>.page-link,
+    .page-link.active {
+        background-color: var(--main);
+        border-color: var(--main);
+        color: var(--secondary);
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .dataTables_length,
+    .dataTables_filter {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 767px) and (max-width: 1140px) {
+
+    /* List */
+    .listtable {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        border: 1px solid var(--border);
+    }
+
+    .filter-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .filter-container-start {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .filter-container-start select {
+        width: 25%;
+        color: var(--primary);
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 3px 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    .filter-container-start input {
+        width: 70%;
+        color: var(--primary);
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 3px 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 0px 5px 5px 0px;
+    }
+
+    .filter-container-end {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .dataTables_wrapper {
+        width: 150% !important;
+        overflow: auto;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .table thead th,
+    .table tbody th {
+        color: var(--primary);
+        font-size: 11px;
+        font-weight: var(--fw-lg);
+        text-transform: uppercase;
+    }
+
+    .table tbody td,
+    .table tfoot td {
+        color: var(--tdata);
+        font-size: 11px;
+        font-weight: var(--fw-sm);
+        padding: 15px auto;
+    }
+
+    .table tbody td i {
+        color: var(--primary);
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .table select,
+    .table input {
+        font-size: 11px;
+        padding: 5px;
+    }
+
+    .page-link {
+        font-size: 10px;
+        color: var(--main);
+    }
+
+    .active>.page-link,
+    .page-link.active {
+        background-color: var(--main);
+        border-color: var(--main);
+        color: var(--secondary);
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .dataTables_length label {
+        font-weight: 600 !important;
+    }
+
+    .dataTables_length,
+    .dataTables_filter {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    /* List */
+    .listtable {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        border: 1px solid var(--border);
+    }
+
+    .filter-container {
+        display: block;
+        gap: 0px;
+    }
+
+    .filter-container-start {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .filter-container-start select {
+        width: 40%;
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 5px 0px 0px 5px;
+        background-color: var(--secondary);
+    }
+
+    .filter-container-start input {
+        width: 60%;
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 0px 5px 5px 0px;
+        background-color: var(--secondary);
+    }
+
+    .dataTables_wrapper {
+        width: 300% !important;
+        overflow: auto;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .filter-container-end,
+    .filter-container-end div {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .filter-container-end img {
+        height: 30px !important;
+    }
+
+    .table thead th,
+    .table tbody th {
+        color: var(--primary);
+        font-size: 11px;
+        font-weight: var(--fw-lg);
+        text-transform: uppercase;
+    }
+
+    .table tbody td,
+    .table tfoot td {
+        color: var(--tdata);
+        font-size: 11px;
+        font-weight: var(--fw-sm);
+        padding: 10px auto;
+    }
+
+    .table tbody td i {
+        color: var(--primary);
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .table select,
+    .table input {
+        font-size: 11px;
+        padding: 5px;
+    }
+
+    .page-link {
+        font-size: 10px;
+        color: var(--main);
+    }
+
+    .active>.page-link,
+    .page-link.active {
+        background-color: var(--main);
+        border-color: var(--main);
+        color: var(--secondary);
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .dataTables_length label {
+        font-weight: 600 !important;
+    }
+
+    .dataTables_length,
+    .dataTables_filter {
+        display: none;
+    }
+
+}

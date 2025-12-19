@@ -1,0 +1,769 @@
+.btndiv {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    justify-content: space-between;
+}
+
+/* Progress Status Button */
+.prgsbtn {
+    border: none;
+    border-radius: 15px;
+}
+
+@media screen and (min-width: 1350px) {
+
+    /* Progress Status Button */
+    .inprogressbtn {
+        background-color: #D7E4FF;
+        padding: 5px 10px;
+    }
+
+    .blockerbtn {
+        background-color: #FF525299;
+        padding: 5px 10px;
+    }
+
+    .prgsbtn h6 {
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        margin-bottom: 0px;
+    }
+
+    .overview-tab {
+        display: grid;
+        grid-template-columns: 35% 2% 60%;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .brdr {
+        height: 100%;
+        width: 1.5px;
+        background-color: var(--input-border);
+        margin: auto;
+    }
+
+    .btndiv .btnleft h5 {
+        color: var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-xl);
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .btndiv .btnleft h6 {
+        color: var(--label);
+        font-size: 12px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: left;
+    }
+
+    .btndiv .btnright h6 {
+        color: var(--label);
+        font-size: 12px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: right;
+    }
+
+    .ovw-right-head {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .ovw-right-head h5 {
+        color: var(--main);
+        font-size: 15px;
+        font-weight: var(--fw-xl);
+    }
+
+    .timelinecards .accordion-collapse {
+        width: 96%;
+        margin: 0px 0px 30px auto;
+    }
+
+    .timelinecards .accordion-item {
+        cursor: pointer;
+    }
+
+    /* Cards */
+    .updatecard {
+        margin-bottom: 20px;
+    }
+
+    .updatecard h4 {
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updatecarddiv {
+        display: grid;
+        grid-template-columns: 48% 48%;
+        /* align-items: center; */
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: var(--box-shadow-1);
+        border-radius: 10px;
+        border: 1px solid var(--input-border);
+    }
+
+    .accordion-collapse .updatecardleft h5 {
+        color: var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 0px;
+    }
+
+    .prgshead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg img {
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    .accordion-collapse .prgsbottom h6 {
+        color: var(--label);
+        font-size: 12px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+    }
+
+    .accordion-collapse .updation h5 {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updationname h6 {
+        color: var(--label);
+        font-size: 12px;
+        font-weight: var(--fw-md);
+        margin-bottom: 5px;
+    }
+
+}
+
+@media screen and (min-width: 1098px) and (max-width: 1350px) {
+
+    /* Progress Status Button */
+    .inprogressbtn {
+        background-color: #D7E4FF;
+        padding: 5px 10px;
+    }
+
+    .blockerbtn {
+        background-color: #FF525299;
+        padding: 5px 10px;
+    }
+
+    .prgsbtn h6 {
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        margin-bottom: 0px;
+    }
+
+    .overview-tab {
+        display: grid;
+        grid-template-columns: 35% 2% 60%;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .brdr {
+        height: 100%;
+        width: 1.5px;
+        background-color: var(--input-border);
+        margin: auto;
+    }
+
+    .btndiv .btnleft h5 {
+        color: var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-xl);
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .btndiv .btnleft h6 {
+        color: var(--label);
+        font-size: 11px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: left;
+    }
+
+    .btndiv .btnright h6 {
+        color: var(--label);
+        font-size: 11px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: right;
+    }
+
+    .ovw-right-head {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 13px;
+    }
+
+    .ovw-right-head h5 {
+        color: var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-xl);
+    }
+
+    .timelinecards .accordion-collapse {
+        width: 96%;
+        margin: 0px 0px 0px auto;
+    }
+
+    .timelinecards .accordion-item {
+        cursor: pointer;
+    }
+
+    /* Cards */
+    .updatecard {
+        margin-bottom: 20px;
+    }
+
+    .updatecard h4 {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updatecarddiv {
+        display: grid;
+        grid-template-columns: 48% 48%;
+        /* align-items: center; */
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: var(--box-shadow-1);
+        border-radius: 10px;
+        border: 1px solid var(--input-border);
+    }
+
+    .accordion-collapse .updatecardleft h5 {
+        color: var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 0px;
+    }
+
+    .prgshead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 13px;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg img {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .accordion-collapse .prgsbottom h6 {
+        color: var(--label);
+        font-size: 11px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+    }
+
+    .accordion-collapse .updation h5 {
+        color: var(--primary);
+        font-size: 11px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updationname h6 {
+        color: var(--label);
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        margin-bottom: 5px;
+    }
+
+}
+
+@media screen and (min-width: 890px) and (max-width: 1098px) {
+
+    /* Progress Status Button */
+    .inprogressbtn {
+        background-color: #D7E4FF;
+        padding: 3px 8px;
+    }
+
+    .blockerbtn {
+        background-color: #FF525299;
+        padding: 3px 8px;
+    }
+
+    .prgsbtn h6 {
+        font-size: 8px;
+        font-weight: var(--fw-md);
+        margin-bottom: 0px;
+    }
+
+    .overview-tab {
+        display: grid;
+        grid-template-columns: 35% 2% 60%;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .brdr {
+        height: 100%;
+        width: 1.5px;
+        background-color: var(--input-border);
+        margin: auto;
+    }
+
+    .btndiv .btnleft h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .btndiv .btnleft h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: left;
+    }
+
+    .btndiv .btnright h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: right;
+    }
+
+    .ovw-right-head {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 13px;
+    }
+
+    .ovw-right-head h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+    }
+
+    .timelinecards .accordion-collapse {
+        width: 96%;
+        margin: 0px 0px 0px auto;
+    }
+
+    .timelinecards .accordion-item {
+        cursor: pointer;
+    }
+
+    /* Cards */
+    .updatecard {
+        margin-bottom: 15px;
+    }
+
+    .updatecard h4 {
+        color: var(--primary);
+        font-size: 10px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updatecarddiv {
+        display: grid;
+        grid-template-columns: 48% 48%;
+        /* align-items: center; */
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: var(--box-shadow-1);
+        border-radius: 10px;
+        border: 1px solid var(--input-border);
+    }
+
+    .accordion-collapse .updatecardleft h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 0px;
+    }
+
+    .prgshead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg img {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .accordion-collapse .prgsbottom h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+    }
+
+    .accordion-collapse .updation h5 {
+        color: var(--primary);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updationname h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        margin-bottom: 5px;
+    }
+
+}
+
+@media screen and (min-width: 767px) and (max-width: 890px) {
+
+    /* Progress Status Button */
+    .inprogressbtn {
+        background-color: #D7E4FF;
+        padding: 3px 8px;
+    }
+
+    .blockerbtn {
+        background-color: #FF525299;
+        padding: 3px 8px;
+    }
+
+    .prgsbtn h6 {
+        font-size: 8px;
+        font-weight: var(--fw-md);
+        margin-bottom: 0px;
+    }
+
+    .overview-tab {
+        display: grid;
+        grid-template-columns: 35% 2% 60%;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .brdr {
+        height: 100%;
+        width: 1.5px;
+        background-color: var(--input-border);
+        margin: auto;
+    }
+
+    .btndiv .btnleft h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .btndiv .btnleft h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: left;
+    }
+
+    .btndiv .btnright h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: right;
+    }
+
+    .ovw-right-head {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 13px;
+    }
+
+    .ovw-right-head h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+    }
+
+    .timelinecards .accordion-collapse {
+        width: 96%;
+        margin: 0px 0px 0px auto;
+    }
+
+    .timelinecards .accordion-item {
+        cursor: pointer;
+    }
+
+    /* Cards */
+    .updatecard {
+        margin-bottom: 15px;
+    }
+
+    .updatecard h4 {
+        color: var(--primary);
+        font-size: 10px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updatecarddiv {
+        display: grid;
+        grid-template-columns: 48% 48%;
+        /* align-items: center; */
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: var(--box-shadow-1);
+        border-radius: 10px;
+        border: 1px solid var(--input-border);
+    }
+
+    .accordion-collapse .updatecardleft h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 0px;
+    }
+
+    .prgshead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg img {
+        height: 35px;
+        border-radius: 5px;
+    }
+
+    .accordion-collapse .prgsbottom h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+    }
+
+    .accordion-collapse .updation h5 {
+        color: var(--primary);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updationname h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        margin-bottom: 5px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    /* Progress Status Button */
+    .inprogressbtn {
+        background-color: #D7E4FF;
+        padding: 3px 8px;
+    }
+
+    .blockerbtn {
+        background-color: #FF525299;
+        padding: 3px 8px;
+    }
+
+    .prgsbtn h6 {
+        font-size: 8px;
+        font-weight: var(--fw-md);
+        margin-bottom: 0px;
+    }
+
+    .overview-tab {
+        display: block;
+    }
+
+    .brdr {
+        display: none;
+    }
+
+    .btndiv .btnleft h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .btndiv .btnleft h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: left;
+    }
+
+    .btndiv .btnright h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+        text-align: right;
+    }
+
+    .ovw-right-head {
+        display: block;
+        margin-bottom: 13px;
+    }
+
+    .ovw-right-head h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 10px !important;
+    }
+
+    .timelinecards .accordion-collapse {
+        width: 95%;
+        margin: 0px 0px 0px auto;
+    }
+
+    .timelinecards .accordion-item {
+        cursor: pointer;
+    }
+
+    /* Cards */
+    .updatecard {
+        margin-bottom: 15px;
+    }
+
+    .updatecard h4 {
+        color: var(--primary);
+        font-size: 10px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updatecarddiv {
+        display: block;
+        padding: 8px;
+        box-shadow: var(--box-shadow-1);
+        border-radius: 10px;
+        border: 1px solid var(--input-border);
+    }
+
+    .accordion-collapse .updatecardleft h5 {
+        color: var(--main);
+        font-size: 12px;
+        font-weight: var(--fw-xl);
+        margin-bottom: 0px;
+    }
+
+    .prgshead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    .accordion-collapse .updatecardright {
+        margin-top: 20px;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .accordion-collapse .updatecardright .prgsimg img {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .accordion-collapse .prgsbottom h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 0px;
+    }
+
+    .accordion-collapse .updation h5 {
+        color: var(--primary);
+        font-size: 10px;
+        font-weight: var(--fw-sm);
+        margin-bottom: 5px;
+    }
+
+    .accordion-collapse .updationname h6 {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        margin-bottom: 5px;
+    }
+
+}

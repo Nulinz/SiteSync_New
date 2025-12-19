@@ -1,0 +1,200 @@
+@media screen and (min-width: 1098px) {
+
+    .settingbuttondiv {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .settingleft .settingform-div,
+    .settingright .settingform-div {
+        border: 1px solid #eee;
+        border-radius: 5px;
+    }
+
+    .settingheader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .settingheader,
+    .settingform {
+        padding: 10px;
+    }
+
+    .settingheader h5 {
+        color: var(--main);
+        font-size: 18px;
+        font-weight: var(--fw-xl);
+    }
+
+    .settingheader h6 {
+        font-weight: var(--fw-md);
+        font-size: 13px;
+        color: var(--label);
+    }
+
+    .settingtable th {
+        font-weight: var(--fw-md);
+        font-size: 12px;
+        color: var(--label);
+    }
+
+    .settingtable td,
+    .settingtable td h6 {
+        font-weight: var(--fw-lg);
+        font-size: 12px;
+        color: var(--primary) !important;
+    }
+
+    .settingform .form-div h5 {
+        color: var(--primary);
+        font-size: 15px;
+        font-weight: var(--fw-lg);
+        margin-bottom: 5px !important;
+    }
+
+    .settingform .form-check label {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: var(--fw-md);
+    }
+
+    .settingform-div .notify {
+        margin-top: 25px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1098px) {
+
+    .settingbuttondiv {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .settingleft .settingform-div,
+    .settingright .settingform-div {
+        border: 1px solid #eee;
+        border-radius: 5px;
+    }
+
+    .settingheader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .settingheader,
+    .settingform {
+        padding: 10px;
+    }
+
+    .settingheader h5 {
+        color: var(--main);
+        font-size: 17px;
+        font-weight: var(--fw-xl);
+    }
+
+    .settingheader h6 {
+        font-size: 11px;
+        color: var(--label);
+        font-weight: var(--fw-md);
+    }
+
+    .settingtable th {
+        font-weight: var(--fw-md);
+        font-size: 10px !important;
+        color: var(--label);
+    }
+
+    .settingtable td,
+    .settingtable td h6 {
+        font-weight: var(--fw-lg);
+        font-size: 10px !important;
+        color: var(--primary) !important;
+    }
+
+    .settingform .form-div h5 {
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: var(--fw-lg);
+        margin-bottom: 10px !important;
+    }
+
+    .settingform .form-check label {
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        color: var(--primary);
+    }
+    
+    .settingform-div .notify {
+        margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .settingbuttondiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .settingleft .settingform-div,
+    .settingright .settingform-div {
+        border: 1px solid #eee;
+        border-radius: 5px;
+    }
+
+    .settingheader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .settingheader,
+    .settingform {
+        padding: 10px;
+    }
+
+    .settingheader h5 {
+        font-size: 15px;
+        color: var(--main);
+        font-weight: var(--fw-xl);
+    }
+
+    .settingheader h6 {
+        font-weight: var(--fw-md);
+        font-size: 10px;
+        color: var(--label);
+    }
+
+    .settingtable th {
+        font-weight: var(--fw-md);
+        font-size: 10px !important;
+        color: var(--label);
+    }
+
+    .settingtable td,
+    .settingtable td h6 {
+        font-weight: var(--fw-lg);
+        font-size: 10px !important;
+        color: var(--primary) !important;
+    }
+
+    .settingform .form-div h5 {
+        color: var(--primary);
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        margin-bottom: 10px !important;
+    }
+
+    .settingform .form-check label {
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        color: var(--primary);
+    }
+}

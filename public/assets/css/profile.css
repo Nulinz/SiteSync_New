@@ -1,0 +1,755 @@
+.accordion-body::-webkit-scrollbar {
+    display: none;
+}
+
+.listtable .accordion-button::after {
+    width: 0px;
+    height: 0px;
+    background-image: none;
+    margin-left: 0px;
+}
+
+@media screen and (min-width: 1350px) {
+
+    .mainbdy {
+        margin-top: 10px;
+    }
+
+    /* .row {
+        --bs-gutter-x: 0rem;
+    } */
+
+    .maincard {
+        position: relative;
+        background-color: var(--secondary);
+        padding: 15px 15px 0px 15px;
+        border-radius: 6px;
+    }
+
+    .lefthead {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 48% 2% 48%;
+        justify-content: space-between;
+    }
+
+    .cards .brdr {
+        width: 1px;
+        height: 100%;
+        background-color: #eee;
+    }
+
+    .cardshead {
+        margin-bottom: 15px;
+    }
+
+    .cardsh5 h5 {
+        font-size: 16px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    .cards .row .profileimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .leftcard .col-sm-12 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .assigndetails .col-sm-12 img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .filedetails .col-sm-12 img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cards .row .col-sm-12 h6 {
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        color: var(--thead);
+    }
+
+    .cards .row .col-sm-12 h5 {
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        color: var(--primary);
+    }
+
+    /* Tabs */
+    .proftabs {
+        margin-top: 10px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10.5px;
+    }
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .tab-content {
+        margin-top: 10px;
+    }
+
+    .profilelisthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profileleft {
+        background-color: var(--theadbg);
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px;
+        border-radius: 5px;
+        width: 25%;
+    }
+
+    .profileright {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .profileright input.form-control {
+        width: 65%;
+        margin-left: 0px;
+        height: 32px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 2px solid #eee;
+        border-radius: 5px;
+        background-color: var(--secondary) !important;
+        color: var(--primary);
+        box-shadow: var(--box-shadow-1);
+    }
+
+    /* Accordion */
+    .accordion-item {
+        border: none;
+        background-color: transparent;
+        color: var(--primary);
+    }
+
+}
+
+@media screen and (min-width: 1140px) and (max-width: 1350px) {
+
+    .mainbdy {
+        /* gap: 10px; */
+        margin-top: 10px;
+    }
+
+    .row {
+        --bs-gutter-x: 0rem;
+    }
+
+    .maincard {
+        position: relative;
+        background-color: var(--secondary);
+        padding: 8px 8px 0px 8px;
+        border-radius: 6px;
+    }
+
+    .lefthead {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 7px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 48% 2% 48%;
+        justify-content: space-between;
+    }
+
+    .cards .brdr {
+        width: 1px;
+        height: 100%;
+        background-color: #eee;
+    }
+
+    .cardshead {
+        margin-bottom: 15px;
+    }
+
+    .cardsh5 h5 {
+        font-size: 16px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    .cards .row .profileimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .leftcard .col-sm-12 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .assigndetails .col-sm-12 img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .filedetails .col-sm-12 img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cards .row .col-sm-12 h6 {
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        color: var(--thead);
+    }
+
+    .cards .row .col-sm-12 h5 {
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        color: var(--primary);
+    }
+
+    /* Tabs */
+    .proftabs {
+        margin-top: 10px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10.5px;
+    }
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .tab-content {
+        margin-top: 10px;
+    }
+
+    .profilelisthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profileleft {
+        background-color: var(--theadbg);
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px;
+        border-radius: 5px;
+        width: 35%;
+    }
+
+    .profileright {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .profileright input {
+        width: 65%;
+        margin-left: 0px;
+        height: 32px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        color: var(--primary);
+        box-shadow: var(--box-shadow);
+    }
+
+    /* Accordion */
+    .accordion-item {
+        border: none;
+        background-color: transparent;
+        color: var(--primary);
+    }
+
+    .accordion-body {
+        width: 100%;
+        overflow: auto;
+    }
+
+}
+
+@media screen and (min-width: 1098px) and (max-width: 1140px) {
+
+    .mainbdy {
+        /* gap: 10px; */
+        margin-top: 10px;
+    }
+
+    .row {
+        --bs-gutter-x: 0rem;
+    }
+
+    .maincard {
+        position: relative;
+        background-color: var(--secondary);
+        padding: 10px 10px 0px 10px;
+        border-radius: 6px;
+    }
+
+    .lefthead {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 7px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 48% 2% 48%;
+        justify-content: space-between;
+    }
+
+    .cards .brdr {
+        width: 1px;
+        height: 100%;
+        background-color: #eee;
+    }
+
+    .cardshead {
+        margin-bottom: 15px;
+    }
+
+    .cardsh5 h5 {
+        font-size: 16px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    .cards .row .profileimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .leftcard .col-sm-12 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .assigndetails .col-sm-12 img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .filedetails .col-sm-12 img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cards .row .col-sm-12 h6 {
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        color: var(--thead);
+    }
+
+    .cards .row .col-sm-12 h5 {
+        font-size: 11px;
+        font-weight: var(--fw-md);
+        color: var(--primary);
+    }
+
+    /* Tabs */
+    .proftabs {
+        margin-top: 10px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10.5px;
+    }
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .tab-content {
+        margin-top: 10px;
+    }
+
+    .profilelisthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profileleft {
+        background-color: var(--theadbg);
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px;
+        border-radius: 5px;
+        width: 30%;
+    }
+
+    .profileright {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .profileright input {
+        width: 65%;
+        margin-left: 0px;
+        height: 32px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        color: var(--primary);
+        box-shadow: var(--box-shadow);
+    }
+
+    /* Accordion */
+    .accordion-item {
+        border: none;
+        background-color: transparent;
+        color: var(--primary);
+    }
+
+}
+
+@media screen and (min-width: 767px) and (max-width: 1098px) {
+
+    .mainbdy {
+        margin-top: 10px;
+    }
+
+    .row {
+        --bs-gutter-x: 0rem;
+    }
+
+    .maincard {
+        position: relative;
+        background-color: var(--secondary);
+        padding: 15px 15px 0px 15px;
+        border-radius: 6px;
+    }
+
+    .lefthead {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 48% 2% 48%;
+        justify-content: space-between;
+    }
+
+    .cards .brdr {
+        width: 1px;
+        height: 100%;
+        background-color: #eee;
+    }
+
+    .cardshead {
+        margin-bottom: 15px;
+    }
+
+    .cardsh5 h5 {
+        font-size: 13px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    .cards .row .profileimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .leftcard .col-sm-12 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .assigndetails .col-sm-12 img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .filedetails .col-sm-12 img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cards .row .col-sm-12 h6 {
+        font-size: 8px;
+        font-weight: var(--fw-md);
+        color: var(--thead);
+    }
+
+    .cards .row .col-sm-12 h5 {
+        font-size: 8px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    /* Tabs */
+    .proftabs {
+        margin-top: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10.5px;
+    }
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .tab-content {
+        margin-top: 10px;
+    }
+
+    .profilelisthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profileleft {
+        background-color: var(--theadbg);
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 3px;
+        border-radius: 5px;
+        width: 35%;
+    }
+
+    .profileright {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .profileright input {
+        width: 65%;
+        margin-left: 0px;
+        height: 30px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        color: var(--primary);
+        box-shadow: var(--box-shadow);
+    }
+
+    /* Accordion */
+    .accordion-item {
+        border: none;
+        background-color: transparent;
+        color: var(--primary);
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .mainbdy {
+        margin-top: 10px;
+        display: block;
+    }
+
+    .row {
+        --bs-gutter-x: 0rem !important;
+    }
+
+    .maincard {
+        position: relative;
+        background-color: var(--secondary);
+        padding: 10px 10px 0px 10px;
+        border-radius: 6px;
+    }
+
+    .lefthead {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cardshead {
+        margin-bottom: 10px;
+    }
+
+    .cardsh5 h5 {
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    .cards .row .profileimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .leftcard .col-sm-12 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .assigndetails .col-sm-12 img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .filedetails .col-sm-12 img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cards .row .col-sm-12 h6 {
+        font-size: 12px;
+        font-weight: var(--fw-md);
+        color: var(--thead);
+    }
+
+    .cards .row .col-sm-12 h5 {
+        font-size: 12px;
+        font-weight: var(--fw-lg);
+        color: var(--primary);
+    }
+
+    /* Tabs */
+    .proftabs {
+        margin-top: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 8px;
+    }
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .nav-tabs .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tab-content {
+        margin-top: 10px;
+    }
+
+    .profilelisthead {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profileleft {
+        background-color: var(--theadbg);
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+    .profileright {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .profileright input {
+        width: 100%;
+        margin-left: 0px;
+        height: 32px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: var(--secondary);
+        color: var(--primary);
+        box-shadow: var(--box-shadow);
+    }
+
+    /* Project Porfile CSS */
+    .left-content {
+        border-right: none !important;
+        border-bottom: 1px solid #888;
+        margin-bottom: 15px;
+        padding-right: 0px !important;
+    }
+
+    .right-content {
+        margin-bottom: 15px;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    .left-content .table .lefthead {
+        color: var(--label);
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .left-content .table .leftcntnt {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: var(--fw-lg);
+        margin-bottom: 5px;
+    }
+
+    /* Accordion */
+    .accordion-item {
+        border: none;
+        background-color: transparent;
+        color: var(--primary);
+    }
+
+}

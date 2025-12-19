@@ -1,0 +1,763 @@
+/* Button */
+.asidebtn {
+    background-color: var(--secondary);
+    color: var(--label);
+    height: 40px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: var(--fw-md);
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.formbtn,
+.listbtn,
+.addbtn,
+.deletebtn,
+.deletelistbtn,
+.listtdbtn,
+.modalbtn,
+.profilelistbtn,
+.roleheadbtn,
+.settingheadbtn,
+.qstbtn,
+.exportbtn {
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.modalbtn {
+    background-color: var(--main);
+    color: var(--secondary);
+    font-size: 14px;
+    font-weight: var(--fw-lg);
+    border: 1px solid var(--main);
+    height: 35px;
+    border-radius: 5px;
+    width: 150px;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+/* Button Hover */
+.asidebtn:hover,
+.asidebtn.active,
+.exportbtn:hover {
+    background-color: var(--main);
+    color: var(--secondary) !important;
+}
+
+.formbtn:hover,
+.listbtn:hover,
+.addbtn:hover,
+.deletebtn:hover,
+.deletelistbtn:hover,
+.modalbtn:hover {
+    background-color: var(--secondary);
+    color: var(--main);
+}
+
+.listtdbtn:hover {
+    background-color: transparent;
+    color: var(--main);
+}
+
+.profiletabs.active,
+.profiletabs:hover {
+    border-bottom: 2px solid var(--main);
+    color: var(--main) !important;
+}
+
+.profilefilterbtn:hover,
+.profilefilterbtn.active {
+    background-color: var(--secondary);
+    color: #5577ff;
+    box-shadow: var(--box-shadow-1);
+    transition: var(--transition);
+}
+
+.dashtabs:hover,
+.dashtabs.active,
+.settingheadbtn:hover,
+.profilelistbtn:hover,
+.roleheadbtn:hover,
+.qstbtn:hover {
+    background-color: var(--main);
+    color: var(--secondary);
+}
+
+.taskassignbtn:hover,
+.taskclosebtn:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+@media screen and (min-width: 1140px) {
+
+    /* Form Button */
+    .formbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 1px solid var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        border-radius: 5px;
+        padding: 5px 50px;
+    }
+
+    /* List Button */
+    .listbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 2px solid var(--main);
+        font-weight: var(--fw-md);
+        padding: 4px 25px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    /* Add Button */
+    .addbtn {
+        background-color: var(--green);
+        color: var(--secondary);
+        border: 2px solid var(--green);
+        font-weight: var(--fw-md);
+        padding: 2px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* Delete Button */
+    .deletebtn {
+        background-color: var(--red);
+        color: var(--secondary);
+        border: 2px solid var(--red);
+        font-weight: var(--fw-md);
+        padding: 2px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* Delete List Button */
+    .deletelistbtn {
+        background-color: var(--red);
+        color: var(--secondary);
+        border: 2px solid var(--red);
+        font-weight: var(--fw-lg);
+        padding: 0px 15px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* List td Button */
+    .listtdbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 1px solid var(--main);
+        font-weight: var(--fw-sm);
+        padding: 1px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* Accordion Button */
+    #accordion01 .accordion-button {
+        background-color: var(--secondary);
+        color: var(--primary);
+        border: 1px solid var(--input-border);
+        font-weight: var(--fw-lg);
+        font-size: 15px;
+        height: 35px;
+        padding: 0px;
+        border-radius: 2px !important;
+    }
+
+    /* Profile Tabs */
+    .profiletabs {
+        background-color: transparent;
+        color: var(--thead) !important;
+        border: none;
+        border-bottom: 2px solid var(--secondary);
+        border-radius: 0px;
+        padding: 5px 15px;
+        font-weight: var(--fw-sm);
+        font-size: 13px;
+        transition: var(--transition);
+    }
+
+    /* Dashboard Button */
+    .dashtabs {
+        background-color: var(--secondary);
+        color: var(--main);
+        border: 1px solid var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        border-radius: 5px;
+        padding: 6px 30px;
+        transition: var(--transition);
+    }
+
+    /* Profile List Button */
+    .profilelistbtn {
+        background-color: var(--secondary);
+        color: var(--main);
+        height: 32px;
+        width: 32px;
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        border: none;
+        border-radius: 5px;
+        border: 2px solid #eee;
+    }
+
+    /* Profile Filter Button */
+    .profilefilterbtn {
+        background-color: transparent;
+        color: var(--label);
+        /* padding: 5px; */
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        border: none;
+        border-radius: 3px;
+    }
+
+    /* Role Head Button */
+    .roleheadbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 3px 10px;
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        border: 2px solid var(--input-border);
+        border-radius: 5px;
+    }
+
+    /* Setting Head Button */
+    .settingheadbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 5px 15px;
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        border: 2px solid var(--main);
+        border-radius: 5px;
+    }
+
+    /* Question Button */
+    .qstbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 5px;
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        border: 2px dashed var(--main);
+        border-radius: 5px;
+    }
+
+    /* Task Stages Button */
+    /* Assign Button */
+    .taskassignbtn {
+        background-color: var(--green);
+        color: var(--secondary);
+        font-size: 9px;
+        font-weight: var(--fw-sm);
+        border: 1px solid var(--green);
+        padding: 2px 5px;
+        border-radius: 2px;
+        transition: var(--transition);
+    }
+
+    /* Progress Button */
+    .progressbtn {
+        background-color: var(--secondary);
+        padding: 10px 5px;
+        border: none;
+        border-bottom: 2px solid var(--input-border);
+    }
+
+    .exportbtn {
+        background-color: var(--secondary);
+        color: var(--main);
+        border: 2px solid var(--input-border);
+        border-radius: 5px;
+        padding: 4px 20px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1140px) {
+
+    /* Form Button */
+    .formbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 1px solid var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        border-radius: 5px;
+        padding: 5px 40px;
+    }
+
+    /* List Button */
+    .listbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 2px solid var(--main);
+        font-weight: var(--fw-md);
+        padding: 4px 25px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    /* Add Button */
+    .addbtn {
+        background-color: var(--green);
+        color: var(--secondary);
+        border: 2px solid var(--green);
+        font-weight: var(--fw-md);
+        padding: 2px 10px;
+        border-radius: 3px;
+        font-size: 11px;
+    }
+
+    /* Delete Button */
+    .deletebtn {
+        background-color: var(--red);
+        color: var(--secondary);
+        border: 2px solid var(--red);
+        font-weight: var(--fw-md);
+        padding: 2px 10px;
+        border-radius: 3px;
+        font-size: 11px;
+    }
+
+    /* Delete List Button */
+    .deletelistbtn {
+        background-color: var(--red);
+        color: var(--secondary);
+        border: 2px solid var(--red);
+        font-weight: var(--fw-lg);
+        padding: 0px 15px;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+
+    /* List td Button */
+    .listtdbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 1px solid var(--main);
+        font-weight: var(--fw-sm);
+        padding: 1px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* Accordion Button */
+    #accordion01 .accordion-button {
+        background-color: var(--secondary);
+        color: var(--primary);
+        border: 1px solid var(--input-border);
+        font-weight: var(--fw-lg);
+        font-size: 15px;
+        height: 35px;
+        padding: 0px;
+        border-radius: 2px !important;
+    }
+
+    /* Profile Tabs */
+    .profiletabs {
+        background-color: transparent;
+        color: var(--thead) !important;
+        border: none;
+        border-bottom: 2px solid var(--secondary);
+        border-radius: 0px;
+        padding: 3px 10px;
+        font-weight: var(--fw-sm);
+        font-size: 11px;
+        transition: var(--transition);
+    }
+
+    /* Dashboard Button */
+    .dashtabs {
+        background-color: var(--secondary);
+        color: var(--main);
+        border: 1px solid var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-lg);
+        border-radius: 5px;
+        padding: 6px 30px;
+        transition: var(--transition);
+    }
+
+    /* Profile List Button */
+    .profilelistbtn {
+        background-color: var(--secondary);
+        color: var(--main);
+        height: 30px;
+        width: 30px;
+        font-size: 13px;
+        font-weight: var(--fw-lg);
+        border: none;
+        border-radius: 5px;
+        border: 1px solid #eee;
+    }
+
+    /* Profile Filter Button */
+    .profilefilterbtn {
+        background-color: transparent;
+        color: var(--label);
+        /* padding: 5px; */
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        border: none;
+        border-radius: 3px;
+    }
+
+    /* Role Head Button */
+    .roleheadbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 3px 8px;
+        font-size: 12px;
+        font-weight: var(--fw-md);
+        border: 2px solid var(--input-border);
+        border-radius: 5px;
+    }
+
+    /* Setting Head Button */
+    .settingheadbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 3px 12px;
+        font-size: 12px;
+        font-weight: var(--fw-md);
+        border: 2px solid var(--main);
+        border-radius: 5px;
+    }
+
+    /* Question Button */
+    .qstbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 5px;
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        border: 2px dashed var(--main);
+        border-radius: 5px;
+    }
+
+    /* Task Stages Button */
+    /* Assign Button */
+    .taskassignbtn {
+        background-color: var(--green);
+        color: var(--secondary);
+        font-size: 9px;
+        font-weight: var(--fw-sm);
+        border: 1px solid var(--green);
+        padding: 2px 5px;
+        border-radius: 2px;
+        transition: var(--transition);
+    }
+
+    /* Progress Button */
+    .progressbtn {
+        background-color: var(--secondary);
+        padding: 5px 2px;
+        border: none;
+        border-bottom: 2px solid var(--input-border);
+    }
+
+    /* Export Button */
+    .exportbtn {
+        background-color: var(--secondary);
+        color: var(--main);
+        border: 2px solid var(--input-border);
+        border-radius: 5px;
+        padding: 3px 20px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    /* Form Button */
+    .formbtn,
+    a .formbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 1px solid var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-lg);
+        border-radius: 5px;
+        padding: 6px 50px;
+    }
+
+    /* List Button */
+    .listbtn,
+    a .listbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 2px solid var(--main);
+        font-weight: var(--fw-md);
+        padding: 5px 30px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    /* Add Button */
+    .addbtn {
+        background-color: var(--green);
+        color: var(--secondary);
+        border: 2px solid var(--green);
+        font-weight: var(--fw-md);
+        padding: 2px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+        transition: var(--transition);
+    }
+
+    /* Delete Button */
+    .deletebtn {
+        background-color: var(--red);
+        color: var(--secondary);
+        border: 2px solid var(--red);
+        font-weight: var(--fw-lg);
+        padding: 2px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* Delete List Button */
+    .deletelistbtn {
+        background-color: var(--red);
+        color: var(--secondary);
+        border: 2px solid var(--red);
+        font-weight: var(--fw-lg);
+        padding: 0px 15px;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+
+    /* List td Button */
+    a .listtdbtn,
+    .listtdbtn {
+        background-color: var(--main);
+        color: var(--secondary);
+        border: 1px solid var(--main);
+        font-weight: var(--fw-sm);
+        padding: 1px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+
+    /* Accordion Button */
+    #accordion01 .accordion-button {
+        background-color: var(--secondary);
+        color: var(--primary);
+        border: 1px solid var(--input-border);
+        font-weight: var(--fw-lg);
+        font-size: 13px;
+        height: 35px;
+        padding: 5px;
+        border-radius: 2px !important;
+    }
+
+    /* Profile Tabs */
+    .profiletabs {
+        background-color: transparent;
+        color: var(--thead) !important;
+        border: none;
+        border-bottom: 2px solid var(--secondary);
+        border-radius: 0px;
+        padding: 3px 25px;
+        font-weight: var(--fw-sm);
+        font-size: 11px;
+        transition: var(--transition);
+        margin: 0px auto 8px auto;
+    }
+
+    /* Dashboard Button */
+    .dashtabs {
+        background-color: var(--secondary);
+        color: var(--main);
+        border: 1px solid var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-lg);
+        border-radius: 5px;
+        padding: 6px 20px;
+        transition: var(--transition);
+    }
+
+    /* Profile List Button */
+    .profilelistbtn {
+        background-color: var(--secondary);
+        color: var(--main);
+        height: 32px;
+        width: 32px;
+        font-size: 14px;
+        font-weight: var(--fw-lg);
+        border: none;
+        border-radius: 5px;
+        border: 1px solid #eee;
+    }
+
+    /* Profile Filter Button */
+    .profilefilterbtn {
+        background-color: transparent;
+        color: var(--label);
+        /* padding: 5px; */
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        border: none;
+        border-radius: 3px;
+    }
+
+    /* Role Head Button */
+    .roleheadbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 3px 8px;
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        border: 2px solid var(--input-border);
+        border-radius: 5px;
+    }
+
+    /* Setting Head Button */
+    .settingheadbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 3px 10px;
+        font-size: 10px;
+        font-weight: var(--fw-md);
+        border: 2px solid var(--main);
+        border-radius: 5px;
+    }
+
+    /* Question Button */
+    .qstbtn {
+        background-color: transparent;
+        color: var(--main);
+        padding: 5px;
+        font-size: 13px;
+        font-weight: var(--fw-md);
+        border: 2px dashed var(--main);
+        border-radius: 5px;
+    }
+
+    /* Task Stages Button */
+    /* Assign Button */
+    .taskassignbtn {
+        background-color: var(--green);
+        color: var(--secondary);
+        font-size: 9px;
+        font-weight: var(--fw-sm);
+        border: 1px solid var(--green);
+        padding: 2px 5px;
+        border-radius: 2px;
+        transition: var(--transition);
+    }
+
+    /* Progress Button */
+    .progressbtn {
+        background-color: var(--secondary);
+        padding: 8px 4px;
+        border: none;
+        border-bottom: 2px solid var(--input-border);
+    }
+
+    /* Export Button */
+    .exportbtn {
+        background-color: var(--secondary);
+        color: var(--main);
+        border: 2px solid var(--input-border);
+        border-radius: 5px;
+        padding: 3px 15px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+}
+
+/* HeadBtns */
+@media screen and (min-width: 1400px) {
+    .headbtns {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        align-items: center;
+        justify-content: start;
+        gap: 5px;
+    }
+
+    .tabbtns {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+    }
+}
+
+@media screen and (min-width: 1140px) and (max-width: 1400px) {
+    .headbtns {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: start;
+        gap: 5px;
+    }
+
+    .tabbtns {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1140px) {
+    .headbtns {
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        align-items: center;
+        justify-content: start;
+    }
+
+    .tabbtns {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .headbtns {
+        display: grid;
+        grid-template-columns: repeat(2, 45%);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .headbtns div {
+        margin: 10px auto !important;
+    }
+
+    .tabbtns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .tabbtns div {
+        margin: 10px auto !important;
+    }
+}

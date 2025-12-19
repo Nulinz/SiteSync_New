@@ -1,0 +1,271 @@
+@media screen and (min-width: 1140px) {
+
+    /* Main body */
+    .main {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 17% 83%;
+        justify-content: space-evenly;
+    }
+
+    .body {
+        width: 100%;
+        margin: 0px auto;
+        /* background-color: var(--bg); */
+        /* box-shadow: inset .75rem 0 1.5rem 0 rgba(0, 0, 0, .075); */
+    }
+
+    .body-div {
+        margin-top: 30px;
+    }
+
+    .sidebodyback {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .backhead {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        column-gap: 10px;
+        cursor: pointer;
+    }
+
+    .backhead h5 {
+        font-size: 20px;
+        font-weight: var(--fw-lg);
+        color: var(--aside-li);
+    }
+
+    .backhead h6 {
+        font-size: 15px;
+        font-weight: var(--fw-md);
+        color: var(--tinp-border);
+    }
+
+    .body-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .body-h6 {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .body-div .body-head h4 {
+        color: var(--main);
+        font-weight: var(--fw-xl);
+        font-size: 18px;
+    }
+
+    .body-div .body-head h5 {
+        color: var(--main);
+        font-weight: var(--fw-xl);
+        font-size: 15px;
+    }
+
+    .body-div .body-head .head1h6,
+    .body-div .body-head .head1h6 a {
+        color: var(--thead);
+        font-size: 13px;
+        font-weight: var(--fw-sm);
+    }
+
+    .body-div .body-head .head2h6,
+    .body-div .body-head .head2h6 a {
+        color: var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-md);
+    }
+
+}
+
+@media screen and (min-width: 767px) and (max-width: 1140px) {
+
+    /* Main body */
+    .main {
+        width: 100%;
+        margin: 0px auto 0px auto;
+        display: block;
+    }
+
+    .body {
+        width: 99%;
+        margin: 0px auto;
+        /* background-color: var(--bg); */
+        /* box-shadow: inset .75rem 0 1.5rem 0 rgba(0, 0, 0, .075); */
+    }
+
+    .body-div {
+        margin-top: 10px;
+        padding: 5px 8px !important;
+    }
+
+    .body-div .container {
+        margin: auto 0px;
+    }
+
+    .sidebodyback {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .backhead {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        column-gap: 10px;
+        cursor: pointer;
+    }
+
+    .backhead h5 {
+        font-size: 20px;
+        font-weight: var(--fw-lg);
+        color: var(--aside-li);
+    }
+
+    .backhead h6 {
+        font-size: 15px;
+        font-weight: var(--fw-md);
+        color: var(--tinp-border);
+    }
+
+    .body-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .body-h6 {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .body-div .body-head h4 {
+        color: var(--main);
+        font-weight: var(--fw-xl);
+        font-size: 18px;
+    }
+    
+    .body-div .body-head h5 {
+        color: var(--main);
+        font-weight: var(--fw-xl);
+        font-size: 15px;
+    }
+
+    .body-div .body-head .head1h6,
+    .body-div .body-head .head1h6 a {
+        color: var(--thead);
+        font-size: 13px;
+        font-weight: var(--fw-md);
+    }
+
+    .body-div .body-head .head2h6,
+    .body-div .body-head .head2h6 a {
+        color: var(--main);
+        font-size: 13px;
+        font-weight: var(--fw-md);
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    /* Main body */
+    .main {
+        width: 100%;
+        margin: 0px auto 0px auto;
+        display: block;
+    }
+
+    .body {
+        width: 98%;
+        margin: 0px auto;
+    }
+
+    .body-div {
+        margin-top: 10px;
+        padding: 10px 10px !important;
+    }
+
+    .body-div .container {
+        margin: auto 0px;
+    }
+
+    .sidebodyback {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .backhead {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        column-gap: 10px;
+        cursor: pointer;
+    }
+
+    .backhead h5 {
+        font-size: 20px;
+        font-weight: var(--fw-lg);
+        color: var(--aside-li);
+    }
+
+    .backhead h6 {
+        font-size: 15px;
+        font-weight: var(--fw-md);
+        color: var(--tinp-border);
+    }
+
+    .body-head {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .body-h6 {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .body-div .body-head h4 {
+        color: var(--main);
+        font-weight: var(--fw-xl);
+        font-size: 18px;
+    }
+    
+    .body-div .body-head h5 {
+        color: var(--main);
+        font-weight: var(--fw-xl);
+        font-size: 15px;
+    }
+
+    .body-div .body-head .head1h6,
+    .body-div .body-head .head1h6 a {
+        color: var(--thead);
+        font-size: 14px;
+        font-weight: var(--fw-md);
+    }
+
+    .body-div .body-head .head2h6,
+    .body-div .body-head .head2h6 a {
+        color: var(--main);
+        font-size: 14px;
+        font-weight: var(--fw-md);
+    }
+
+}
