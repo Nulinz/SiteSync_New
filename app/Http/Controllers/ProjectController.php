@@ -57,7 +57,7 @@ class ProjectController extends Controller
 
             return $item;
         });
-        
+
         // dd($projects);
 
         // $tasks = Task::all();
@@ -162,6 +162,22 @@ class ProjectController extends Controller
         return redirect('/project-list');
     }
 
+    // public function assignto(Request $request)
+    // {
+    //     $project = Project::find($request->project_id);
+    //     if (!$project)
+    //         return response()->json(['data' => []]);
+
+    //     // If project is general or assigned_to is empty
+    //     if ($project->is_general || empty($project->assigned_to)) {
+    //         $users = Employee::select('id', 'name')->orderBy('name')->get();
+    //     } else {
+    //         // assigned_users relation returns only assigned employees
+    //         $users = $project->assigned_users;
+    //     }
+
+    //     return response()->json(['data' => $users]);
+    // }
 
     // public function downloadFile($id)
     // {

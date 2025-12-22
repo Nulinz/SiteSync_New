@@ -58,6 +58,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
+
+        // Route::get('/assignto', 'ProjectController@assignto');
+
+
     Route::group(['middleware' => 'auth:sanctum'], function () {
 
         Route::post('/logout', 'AuthenticationController@api_logout');
@@ -66,6 +70,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         // project based routes
 
         Route::post('/project_list', 'mobile_cnt@pro_list');
+
         Route::post('/project_emp', 'ProjectController@project_emp');
 
         Route::post('/category-list', 'SettingController@categorylist');

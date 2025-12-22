@@ -25,8 +25,6 @@ use App\Services\FirebaseService;
 //     return view('welcome');
 // });
 
-
-
 Route::view('/', 'login')->name('home');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {

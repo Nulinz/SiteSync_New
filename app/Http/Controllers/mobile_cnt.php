@@ -28,24 +28,145 @@ use Carbon\Carbon;
 
 class mobile_cnt extends Controller
 {
-    use common;
     public function pro_list()
     {
-        $userId = auth()->user()->id;
+        try {
+            $userId = (string) auth()->user()->id;
 
-        $list = Project::whereJsonContains('assigned_to', (string) auth()->user()->id)
-            ->where('status', 'active')
-            ->select('id', 'project_name', 'project_id', 'assigned_to', 'progress', 'status')
-            ->get()
-            ->map(function ($item) {
-                $item->assign_users = $item->assigned_users;
-                unset($item->assigned_to);
-                return $item;
-            });
+            $projects = Project::where('status', 'active')
+                ->select('id', 'project_name', 'project_id', 'assigned_to', 'progress', 'status')
+                ->get()
+                ->map(function ($project) use ($userId) {
 
-        return response()->json(['data' => $list]);
+                    // ✅ FIX: Check if assigned_to is already an array
+                    if (is_array($project->assigned_to)) {
+                        $assignedIds = $project->assigned_to;
+                    } elseif (is_string($project->assigned_to)) {
+                        $assignedIds = json_decode($project->assigned_to, true) ?? [];
+                    } else {
+                        $assignedIds = [];
+                    }
+
+                    // Clean up - ensure all IDs are strings
+                    $assignedIds = array_map('strval', array_filter($assignedIds));
+
+                    // GENERAL PROJECT (no specific assignments)
+                    if (count($assignedIds) === 0) {
+                        return [
+                            'id' => $project->id,
+                            'project_name' => $project->project_name,
+                            'project_id' => $project->project_id,
+                            'progress' => $project->progress,
+                            'status' => $project->status,
+                            'is_general' => true,
+                            'assigned_to' => [],
+                            'assigned_users' => Employee::select('id', 'name')
+                                ->orderBy('name')
+                                ->get()
+                                ->toArray() // ✅ FIXED - Added ()
+                        ];
+                    }
+
+                    // NORMAL PROJECT (specific users assigned)
+                    if (in_array($userId, $assignedIds)) {
+                        return [
+                            'id' => $project->id,
+                            'project_name' => $project->project_name,
+                            'project_id' => $project->project_id,
+                            'progress' => $project->progress,
+                            'status' => $project->status,
+                            'is_general' => false,
+                            'assigned_to' => $assignedIds,
+                            'assigned_users' => Employee::whereIn('id', $assignedIds)
+                                ->select('id', 'name')
+                                ->orderBy('name')
+                                ->get()
+                                ->toArray() // ✅ This one is correct
+                        ];
+                    }
+
+                    // User not assigned to this project
+                    return null;
+                })
+                ->filter() // Remove null values
+                ->values(); // Reset array keys
+
+            return response()->json([
+                'success' => true,
+                'data' => $projects
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error('pro_list error: ' . $e->getMessage(), [
+                'userId' => auth()->user()->id ?? 'unknown',
+                'line' => $e->getLine(),
+                'file' => $e->getFile()
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to load projects',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
+    // public function pro_list() // or whatever method loads your form
+    // {
+    //     $userId = (string) auth()->user()->id;
+
+    //     $projects = Project::where('status', 'active')
+    //         ->select('id', 'project_name', 'assigned_to')
+    //         ->get()
+    //         ->map(function ($project) use ($userId) {
+
+    //             // Check if assigned_to is already an array
+    //             if (is_array($project->assigned_to)) {
+    //                 $assignedIds = $project->assigned_to;
+    //             } elseif (is_string($project->assigned_to)) {
+    //                 $assignedIds = json_decode($project->assigned_to, true) ?? [];
+    //             } else {
+    //                 $assignedIds = [];
+    //             }
+
+    //             // Clean up IDs
+    //             $assignedIds = array_map('strval', array_filter($assignedIds));
+
+    //             // GENERAL PROJECT
+    //             if (count($assignedIds) === 0) {
+    //                 $project->is_general = true;
+    //                 $project->assigned_to = [];
+    //                 $project->assigned_users = Employee::select('id', 'name')
+    //                     ->where('id', '!=', $userId)
+    //                     ->orderBy('name')
+    //                     ->get();
+    //             }
+    //             // NORMAL PROJECT
+    //             elseif (in_array($userId, $assignedIds)) {
+    //                 $project->is_general = false;
+    //                 $project->assigned_to = $assignedIds;
+    //                 $project->assigned_users = Employee::whereIn('id', $assignedIds)
+    //                     ->select('id', 'name')
+    //                     ->where('id', '!=', $userId)
+    //                     ->orderBy('name')
+    //                     ->get();
+    //             } else {
+    //                 return null; // User not assigned
+    //             }
+
+    //             return $project;
+    //         })
+    //         ->filter()
+    //         ->values();
+
+    //     // Get all employees for the dropdown
+    //     $employees = Employee::select('id', 'name')
+    //         ->where('id', '!=', auth()->user()->id)
+    //         ->orderBy('name')
+    //         ->get();
+
+    //     return view('task.view', compact('projects', 'employees'));
+    // }
 
     public function snag_cat()
     {

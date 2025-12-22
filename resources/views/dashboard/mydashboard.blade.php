@@ -265,11 +265,13 @@
                         <input type="hidden" name="old_task_id" id="task_id">
                         <div class="col-sm-12 col-md-12 mb-3">
                             <label for="project_id">Project Name</label>
-                            <select class="form-select project_id" id="sel_project_id" autofocus disabled>
-                                <option value="" selected disabled>Select Projects</option>
-                                @foreach ($projects as $project)
-                                    <option data_assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
-                                        value="{{ $project->id }}">
+                            <select class="form-select project_id" id="sel_project_id" readonly>
+                                <option
+                                        value="{{ $project->id }}"
+                                        data-is-general="{{ $project->is_general ? 1 : 0 }}"
+                                        data-assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
+                                        data-assigned_users='@json($project->assigned_users)'
+                                    >
                                         {{ $project->project_name }}
                                     </option>
                                 @endforeach
@@ -438,27 +440,61 @@
             });
         });
 
-        $(document).ready(function() {
-            $(document).on("click", ".btn_completedModal", function() {
-                $('.project_id').val($(this).attr('data_project_id'));
-                $('#task_id').val($(this).attr('data_task_id'));
+$(document).on("change", "#sel_project_id", function () {
 
-                $("#assigned_to").val("");
-                var assignedToIds = $("#sel_project_id option:selected").attr("data_assigned_to");
-                var assignedToArray = assignedToIds ? assignedToIds.split(",") : [];
-                $("#assigned_to option").each(function() {
-                    var optionValue = $(this).val();
-                    if (assignedToArray.includes(optionValue) || optionValue == "") {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
+    $("#assigned_to").val("");
 
-            $(document).on("click", ".btn_closeModal", function() {
-                $('#close_task_id').val($(this).attr('data_task_id'));
-            });
+    let option = $("#sel_project_id option:selected");
+    let isGeneral = option.data("is-general") == 1;
+    let assignedTo = option.attr("data_assigned_to");
+    let assignedUsers = option.attr("data_assigned_users");
+
+    // 🔵 GENERAL PROJECT
+    if (isGeneral && assignedUsers) {
+
+        let users = JSON.parse(assignedUsers);
+
+        $("#assigned_to option").hide();
+        $("#assigned_to option[value='']").show();
+
+        users.forEach(user => {
+            $("#assigned_to option[value='" + user.id + "']").show();
         });
+
+        return;
+    }
+
+    // 🟢 ASSIGNED PROJECT
+    if (assignedTo) {
+
+        let ids = assignedTo.split(",");
+
+        $("#assigned_to option").each(function () {
+            let val = $(this).val();
+            if (ids.includes(val) || val === "") {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+
+        return;
+    }
+
+    // 🟡 FALLBACK
+    $("#assigned_to option").show();
+});
+
+
+// Trigger when modal opens
+$(document).on("click", ".btn_completedModal", function () {
+
+    $('.project_id')
+        .val($(this).attr('data_project_id'))
+        .trigger('change');
+
+    $('#task_id').val($(this).attr('data_task_id'));
+});
+
     </script>
 @endsection
