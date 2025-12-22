@@ -52,7 +52,7 @@ class ProjectController extends Controller
 
         $projects = Project::whereJsonContains('assigned_to', (string) auth()->user()->id)->select('id', 'project_name', 'project_id', 'client_name', 'assigned_to', 'pro_city')->get()->map(function ($item) {
 
-            $item->assign_users = $item->assigned_users;
+            $item->assigned_users = $item->assign_users;
             unset($item->assigned_to);
 
             return $item;

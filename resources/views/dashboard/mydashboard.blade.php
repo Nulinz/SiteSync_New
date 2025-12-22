@@ -270,7 +270,7 @@
                                         value="{{ $project->id }}"
                                         data-is-general="{{ $project->is_general ? 1 : 0 }}"
                                         data-assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
-                                        data-assigned_users='@json($project->assigned_users)'
+                                        data-assign_users='@json($project->assign_users)'
                                     >
                                         {{ $project->project_name }}
                                     </option>
@@ -447,7 +447,7 @@ $(document).on("change", "#sel_project_id", function () {
     let option = $("#sel_project_id option:selected");
     let isGeneral = option.data("is-general") == 1;
     let assignedTo = option.attr("data_assigned_to");
-    let assignedUsers = option.attr("data_assigned_users");
+    let assignedUsers = option.attr("data_assign_users");
 
     // 🔵 GENERAL PROJECT
     if (isGeneral && assignedUsers) {

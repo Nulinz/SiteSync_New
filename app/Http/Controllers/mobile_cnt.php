@@ -60,7 +60,7 @@ class mobile_cnt extends Controller
                             'status' => $project->status,
                             'is_general' => true,
                             'assigned_to' => [],
-                            'assigned_users' => Employee::select('id', 'name')
+                            'assign_users' => Employee::select('id', 'name')
                                 ->orderBy('name')
                                 ->get()
                                 ->toArray() // ✅ FIXED - Added ()
@@ -77,7 +77,7 @@ class mobile_cnt extends Controller
                             'status' => $project->status,
                             'is_general' => false,
                             'assigned_to' => $assignedIds,
-                            'assigned_users' => Employee::whereIn('id', $assignedIds)
+                            'assign_users' => Employee::whereIn('id', $assignedIds)
                                 ->select('id', 'name')
                                 ->orderBy('name')
                                 ->get()
