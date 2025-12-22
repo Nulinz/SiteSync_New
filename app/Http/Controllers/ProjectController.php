@@ -1085,12 +1085,38 @@ class ProjectController extends Controller
 
     public function task_store(Request $request)
     {
-        $request_data = $request->input();
+        // ✅ Basic validation
+        $request->validate([
+            'title' => 'required|string',
+            'project_id' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
 
-        $start_timestamp = $request->input('start_date') . " 00:00:00";
-        $end_timestamp = $request->input('end_date') . " 00:00:00";
+        /* ---------------------------------
+           Normalize project_id
+        ----------------------------------*/
+        $projectId = $request->input('project_id');
 
-        $filePath = $fileName = null;
+        // Convert "general" → 1
+        if ($projectId === 'general') {
+            $projectId = 1;
+        }
+
+        $projectId = (int) $projectId;
+
+        /* ---------------------------------
+           Date handling
+        ----------------------------------*/
+        $start_timestamp = $request->input('start_date') . ' 00:00:00';
+        $end_timestamp = $request->input('end_date') . ' 00:00:00';
+
+        /* ---------------------------------
+           File upload
+        ----------------------------------*/
+        $filePath = null;
+        $fileName = null;
+
         if ($request->hasFile('file_attachment')) {
             $file = $request->file('file_attachment');
             $fileName = $file->getClientOriginalName();
@@ -1098,44 +1124,53 @@ class ProjectController extends Controller
             $filePath = 'storage/' . $filePath;
         }
 
-        if ($request->input('id')) {
+        /* ---------------------------------
+           Common data
+        ----------------------------------*/
+        $data = [
+            'title' => $request->input('title'),
+            'project_id' => $projectId,
+            'assigned_to' => $request->input('assigned_to'),
+            'start_timestamp' => $start_timestamp,
+            'end_timestamp' => $end_timestamp,
+            'description' => $request->input('description'),
+            'created_by' => auth()->user()->id,
+        ];
+
+        if ($filePath) {
+            $data['file_attachment'] = $filePath;
+            $data['file_name'] = $fileName;
+        }
+
+        /* ---------------------------------
+           Update or Create
+        ----------------------------------*/
+        if ($request->filled('id')) {
+
+            // 🔄 Update Task
             $task = Task::find($request->input('id'));
+
             if ($task) {
-                $data['title'] = $request->input('title');
-                $data['assigned_to'] = $request->input('assigned_to');
-                $data['start_timestamp'] = $start_timestamp;
-                $data['end_timestamp'] = $end_timestamp;
-                $data['description'] = $request->input('description');
-                $data['created_by'] = auth()->user()->id;
-                if ($filePath) {
-                    $data['file_attachment'] = $filePath;
-                    $data['file_name'] = $fileName;
-                }
                 $task->update($data);
             }
+
         } else {
-            $data['title'] = $request->input('title');
-            $data['project_id'] = $request->input('project_id');
-            $data['parent_task_id'] = $request->input('parent_task_id') ?? 0;
-            $data['assigned_to'] = $request->input('assigned_to');
-            $data['category_id'] = "0";
-            $data['sub_category_id'] = "0";
-            $data['priority'] = "Low";
-            $data['start_timestamp'] = $start_timestamp;
-            $data['end_timestamp'] = $end_timestamp;
-            $data['description'] = $request->input('description');
-            $data['additional_info'] = "";
-            $data['created_by'] = auth()->user()->id;
-            if ($filePath) {
-                $data['file_attachment'] = $filePath;
-                $data['file_name'] = $fileName;
-            }
+
+            // ➕ Create Task
+            $data += [
+                'parent_task_id' => $request->input('parent_task_id') ?? 0,
+                'category_id' => 0,
+                'sub_category_id' => 0,
+                'priority' => 'Low',
+                'additional_info' => '',
+                'status' => 'in_progress',
+            ];
+
             Task::create($data);
         }
 
         return back()->with('success', 'Task saved successfully!');
     }
-
 
 
     /**

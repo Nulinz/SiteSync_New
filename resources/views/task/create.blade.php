@@ -33,7 +33,7 @@
                         <select class="form-select" name="project_id" id="project_id" autofocus required>
                             <option value="" selected disabled>Select Projects</option>
                             <!-- Static option -->
-                            <option value="general" data_assigned_to="">General</option> @foreach ($projects as $project)
+                            <option value="1" data_assigned_to="">General</option> @foreach ($projects as $project)
                                 <option data_assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
                                     value="{{ $project->id }}">
                                     {{ $project->project_name }}
