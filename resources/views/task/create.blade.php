@@ -32,7 +32,8 @@
                         <label for="project_id">Project Name</label>
                         <select class="form-select" name="project_id" id="project_id" autofocus required>
                             <option value="" selected disabled>Select Projects</option>
-                            @foreach ($projects as $project)
+                            <!-- Static option -->
+                            <option value="general" data_assigned_to="">General</option> @foreach ($projects as $project)
                                 <option data_assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
                                     value="{{ $project->id }}">
                                     {{ $project->project_name }}
@@ -41,14 +42,14 @@
                         </select>
 
                         <!-- <select class="form-select" name="project_id" id="project_id" autofocus required>
-                                                            <option value="" selected disabled>Select Projects</option>
-                                                            @foreach ($projects as $project)
-                                                                <option data_assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
-                                                                    value="{{ $project->id }}">
-                                                                    {{ $project->project_name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select> -->
+                                                                <option value="" selected disabled>Select Projects</option>
+                                                                @foreach ($projects as $project)
+                                                                    <option data_assigned_to="{{ implode(',', $project->assigned_to ?? []) }}"
+                                                                        value="{{ $project->id }}">
+                                                                        {{ $project->project_name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select> -->
                     </div>
                     <div class="col-sm-12 col-md-4 col-xl-4 mb-3 inputs">
                         <label for="title">Task Title</label>
