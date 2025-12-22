@@ -1153,12 +1153,55 @@ class ProjectController extends Controller
      */
     public function project_emp(Request $request)
     {
-        $project = Project::where('id', $request->project_id)->select('assigned_to')->first();
+        $projectId = $request->project_id;
+        $loggedUserId = auth()->user()->id;
 
-        $employees = Employee::whereIn('id', $project->assigned_to)->whereNotIn('id', [auth()->user()->id])->select('id', 'name')->get();
+        // ✅ If General project (mobile sends id = 1 OR assigned_to empty)
+        if ($projectId == 1 || $projectId === 'general') {
+            $employees = Employee::where('id', '!=', $loggedUserId)
+                ->select('id', 'name')
+                ->orderBy('name')
+                ->get();
 
-        return response()->json(['status' => 'success', 'data' => $employees]);
+            return response()->json([
+                'status' => 'success',
+                'type' => 'general',
+                'data' => $employees
+            ]);
+        }
+
+        // ✅ Normal project
+        $project = Project::where('id', $projectId)
+            ->select('assigned_to')
+            ->first();
+
+        if (!$project) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Project not found'
+            ], 404);
+        }
+
+        // Decode assigned_to safely
+        $assignedIds = is_array($project->assigned_to)
+            ? $project->assigned_to
+            : json_decode($project->assigned_to, true);
+
+        $assignedIds = array_filter(array_map('intval', $assignedIds ?? []));
+
+        $employees = Employee::whereIn('id', $assignedIds)
+            ->where('id', '!=', $loggedUserId)
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'type' => 'normal',
+            'data' => $employees
+        ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
