@@ -17,6 +17,7 @@ use App\Models\QC;
 use App\Models\Notify;
 use App\Models\{EntrySurvey, EntryQC, EntrySnag};
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -558,30 +559,43 @@ class TaskController extends Controller
     {
         Log::info('Task assign', $request->all());
 
-        $request_data = $request->input();
-
+        // ✅ ADD THIS BLOCK HERE ↓↓↓
         $fileName = null;
-        $filePath = null; // ✅ IMPORTANT
+        $filePath = null;
+        $fileUrl = null;
 
         if ($request->hasFile('file_attachment')) {
+
             $file = $request->file('file_attachment');
 
-            // Clean file name (replace spaces with underscores)
-            $fileName = str_replace(' ', '_', $file->getClientOriginalName());
+            if (!$file || !$file->isValid()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid file upload'
+                ], 422);
+            }
 
-            // Define path inside S3 bucket (e.g., task/image_(4).png)
+            $originalName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+
+            $cleanName = pathinfo($originalName, PATHINFO_FILENAME);
+            $cleanName = Str::slug($cleanName);
+
+            $fileName = $cleanName . '_' . time() . '.' . $extension;
             $filePath = 'task/' . $fileName;
 
-            // Upload file to S3
-            Storage::disk('s3')->put($filePath, file_get_contents($file));
+            Storage::disk('s3')->put(
+                $filePath,
+                file_get_contents($file),
+                'public'
+            );
 
-            // Optional: make it public if your bucket policy doesn’t already allow public reads
-            // Storage::disk('s3')->setVisibility($filePath, 'public');
+            $fileUrl = Storage::disk('s3')->url($filePath);
         }
+        // ✅ FILE HANDLING ENDS HERE
 
-
-        // Store only the date (no time conversion needed)
-        $due_date = $request->input('enddate'); // Format: YYYY-MM-DD
+        // Store only the date
+        $due_date = $request->input('enddate');
 
         $data = [
             'title' => $request->input('title'),
@@ -590,8 +604,8 @@ class TaskController extends Controller
             'priority' => $request->input('priority'),
             'end_timestamp' => $due_date,
             'description' => $request->input('description'),
-            'file_attachment' => $filePath, // can be null
-            'file_name' => $fileName,       // can be null
+            'file_attachment' => $filePath, // nullable
+            'file_name' => $fileName,       // nullable
             'status' => 'in_progress',
             'created_by' => auth()->user()->id,
         ];
@@ -614,12 +628,16 @@ class TaskController extends Controller
         // Send notification
         $fid_token = Employee::where('id', $request->assigned_to)->value('token');
 
+        $projectName = ($model->project_id == 1)
+            ? 'General'
+            : optional($model->project)->project_name;
+
         $notify_data = [
             'to_id' => $request->assigned_to,
             'f_id' => $model->id,
             'type' => 'task',
             'title' => 'New Task Assigned by ' . (auth()->user()->name ?? 'unknown'),
-            'body' => $request->input('title') . ' in ' . $model->project->project_name,
+            'body' => $request->input('title') . ' in ' . $projectName,
             'token' => [$fid_token],
         ];
 

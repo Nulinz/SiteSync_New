@@ -56,7 +56,8 @@ class Task extends Model
 
     public function project()
     {
-        return $this->belongsTo(Project::class, 'project_id');
+        return $this->belongsTo(Project::class, 'project_id')
+            ->where('id', '!=', 1);
     }
 
     public function children()
