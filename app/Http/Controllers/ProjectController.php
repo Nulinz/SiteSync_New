@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\SnagComment;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -517,44 +518,206 @@ class ProjectController extends Controller
         }
     }
 
+    // public function show($id)
+    // {
+    //     $project = Project::find($id);
+    //     $project_id = $id;
+
+    //     $surveys = Survey::where('status', 'active')->get();
+    //     $tasks = Task::with('parentTask')->where('parent_task_id', 0)->where('project_id', $id)->get();
+    //     $qcs = QC::where('status', 'active')->get();
+    //     $qc_checklists = QCChecklist::all();
+    //     $employees = Employee::where('status', 'active')->get();
+    //     $snags = Snag::where('status', 'active')->get();
+
+    //     $pro_docs = Pro_docs::where('status', 'Active')
+    //         ->where('pro_id', $project_id)
+    //         ->get()
+    //         ->map(function ($doc) {
+    //             if ($doc->file_attachment && !str_starts_with($doc->file_attachment, 'http')) {
+    //                 $doc->file_attachment = Storage::disk('s3')->url($doc->file_attachment);
+    //             }
+    //             return $doc;
+    //         });
+
+    //     $ent_surveys = EntrySurvey::with('user', 'survey')
+    //         ->where('project_id', $id)
+    //         ->orderBy('id', 'DESC')
+    //         ->get()
+    //         ->map(function ($lt) {
+    //             $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
+    //             return $lt;
+    //         });
+
+    //     // ✅ Fixed: no extra ->get() since getActive2DFloorPlanDrawings already returns a collection
+    //     $drawings = $this->getActive2DFloorPlanDrawings($id);
+
+    //     $ent_qcs = EntryQC::with('user', 'qc')
+    //         ->where('project_id', $id)
+    //         ->orderBy('id', 'DESC')
+    //         ->get()
+    //         ->map(function ($lt) {
+    //             $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
+    //             return $lt;
+    //         });
+
+    //     $rejected_ent_drawings = Drawing::join('entry_drawing', 'drawing.id', '=', 'entry_drawing.drawing_id')
+    //         ->leftJoin('employee', 'entry_drawing.uploaded_by', '=', 'employee.id')
+    //         ->where(function ($query) use ($id) {
+    //             $query->where(['entry_drawing.project_id' => $id, 'entry_drawing.is_draft' => 1])
+    //                 ->orWhereNull('entry_drawing.project_id');
+    //         })
+    //         ->select('drawing.*', 'entry_drawing.status', 'employee.name as uploaded_by', 'entry_drawing.uploaded_on', 'entry_drawing.version', 'entry_drawing.file_attachment')
+    //         ->get();
+
+    //     $ent_snags = EntrySnag::with('user', 'snag')
+    //         ->where('project_id', $id)
+    //         ->orderBy('id', 'DESC')
+    //         ->get()
+    //         ->map(function ($lt) {
+    //             $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
+    //             $lt->setAttribute('comment_count', SnagComment::where('snag_id', $lt->id)->count());
+    //             return $lt;
+    //         });
+
+    //     $project_employees = Employee::whereIn('employee.id', $project->assigned_to)
+    //         ->select('id', 'name')
+    //         ->get();
+
+    //     $pro_progress_stage = DB::table('progress_stage')->where('pro_id', $project_id)->orderBy('id')->get();
+
+    //     $pro_progress_tab = DB::table('progress_activity')->where('pro_id', $project_id)
+    //         ->selectRaw('stage, count(activity) as sub_count')
+    //         ->groupBy('stage')->get()
+    //         ->map(function ($item) {
+    //             $stage_det = DB::table('progress_stage')->where('id', $item->stage)
+    //                 ->select('id', 'stage', 'sc_start', 'sc_end')
+    //                 ->first();
+
+    //             $item->stage_name = $stage_det->stage ?? null;
+    //             $item->sc_start = $stage_det->sc_start ?? null;
+    //             $item->sc_end = $stage_det->sc_end ?? null;
+
+    //             $act_id = DB::table('progress_activity')->where('stage', $item->stage)->pluck('id');
+
+    //             $check_status2 = DB::table('activity_work')->whereIn('import_id', $act_id)->where('cat', 'block')->count();
+
+    //             $item->status_2 = ($check_status2 > 0) ? 'delayed' : 'on_time';
+
+    //             return $item;
+    //         });
+
+    //     $material = Activity_work::where('pro_id', $project_id)->pluck('id');
+
+    //     $act_mat = Activity_material::whereIn('act_id', $material)
+    //         ->selectRaw('category, SUM(qty) as total, unit')
+    //         ->groupBy('category', 'unit')
+    //         ->get();
+
+    //     return view('projects.profile', compact(
+    //         'project',
+    //         'surveys',
+    //         'employees',
+    //         'ent_surveys',
+    //         'drawings',
+    //         'ent_drawings',
+    //         'rejected_ent_drawings',
+    //         'tasks',
+    //         'qcs',
+    //         'qc_checklists',
+    //         'ent_qcs',
+    //         'snags',
+    //         'ent_snags',
+    //         'project_employees',
+    //         'project_id',
+    //         'pro_docs',
+    //         'pro_progress_stage',
+    //         'pro_progress_tab',
+    //         'act_mat'
+    //     ));
+    // }
     public function show($id)
     {
         $project = Project::find($id);
         $project_id = $id;
-
         $surveys = Survey::where('status', 'active')->get();
         $tasks = Task::with('parentTask')->where('parent_task_id', 0)->where('project_id', $id)->get();
         $qcs = QC::where('status', 'active')->get();
         $qc_checklists = QCChecklist::all();
         $employees = Employee::where('status', 'active')->get();
+
         $snags = Snag::where('status', 'active')->get();
 
         $pro_docs = Pro_docs::where('status', 'Active')
             ->where('pro_id', $project_id)
             ->get()
             ->map(function ($doc) {
+                // If stored as relative path, prepend full S3 URL
                 if ($doc->file_attachment && !str_starts_with($doc->file_attachment, 'http')) {
                     $doc->file_attachment = Storage::disk('s3')->url($doc->file_attachment);
                 }
                 return $doc;
             });
+        $ent_surveys = EntrySurvey::with('user', 'survey')->where('project_id', $id)->orderBy('id', 'DESC')->get()->map(function ($lt) {
 
-        $ent_surveys = EntrySurvey::with('user', 'survey')
-            ->where('project_id', $id)
-            ->orderBy('id', 'DESC')
-            ->get()
-            ->map(function ($lt) {
-                $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
-                return $lt;
-            });
+            $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
 
-        // ✅ Fixed: no extra ->get() since getActive2DFloorPlanDrawings already returns a collection
-        $drawings = $this->getActive2DFloorPlanDrawings($id);
+            return $lt;
+        });
 
-        $ent_qcs = EntryQC::with('user', 'qc')
-            ->where('project_id', $id)
-            ->orderBy('id', 'DESC')
-            ->get()
+        $ent_drawings = [];
+        $drawings = Drawing::where('status', 'active')->get();
+
+        foreach ($drawings as $drawing) {
+            $models = EntryDrawing::with('drawing')->select(
+                'entry_drawing.id',
+                'entry_drawing.version',
+                'entry_drawing.file_attachment',
+                'entry_drawing.status',
+                'entry_drawing.uploaded_on',
+                'employee.name as uploaded_by'
+            )
+                ->leftJoin('employee', 'employee.id', '=', 'entry_drawing.uploaded_by')
+                ->where('entry_drawing.project_id', $id)
+                ->where('entry_drawing.drawing_id', $drawing->id)
+                ->where('entry_drawing.is_draft', 0)
+                ->where(function ($query) {
+                    $query->where('entry_drawing.status', '!=', 'rejected')
+                        ->orWhereNull('entry_drawing.status');
+                })
+                ->orderBy('entry_drawing.created_at', 'desc')
+                ->get();
+
+            if ($models->isEmpty()) {
+                $ent_drawings[] = [
+                    'title' => $drawing->title,
+                    'file_type' => $drawing->file_type,
+                    'id' => $drawing->id ?? '-',
+                    'version' => '-',
+                    'file_attachment' => '-',
+                    'status' => '-',
+                    'uploaded_on' => '',
+                    'uploaded_by' => '-',
+                    'entry_drawing_id' => '-'
+                ];
+            } else {
+                foreach ($models as $model) {
+                    $ent_drawings[] = [
+                        'title' => $drawing->title,
+                        'file_type' => $drawing->file_type,
+                        'id' => $drawing->id ?? '-',
+                        'version' => $model->version ?? '-',
+                        'file_attachment' => $model->file_attachment ?? '-',
+                        'status' => $model->status ?? '-',
+                        'uploaded_on' => $model->uploaded_on ?? '',
+                        'uploaded_by' => $model->uploaded_by ?? '-',
+                        'entry_drawing_id' => $model->id ?? '-'
+                    ];
+                }
+            }
+        }
+
+        $ent_qcs = EntryQC::with('user', 'qc')->where('project_id', $id)->orderBy('id', 'DESC')->get()
             ->map(function ($lt) {
                 $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
                 return $lt;
@@ -569,35 +732,39 @@ class ProjectController extends Controller
             ->select('drawing.*', 'entry_drawing.status', 'employee.name as uploaded_by', 'entry_drawing.uploaded_on', 'entry_drawing.version', 'entry_drawing.file_attachment')
             ->get();
 
+        // Updated ent_snags query to include comment count
         $ent_snags = EntrySnag::with('user', 'snag')
             ->where('project_id', $id)
             ->orderBy('id', 'DESC')
             ->get()
             ->map(function ($lt) {
                 $lt->setAttribute('approved', Employee::where('id', $lt->approved_by)->value('name') ?? 'Not approved');
-                $lt->setAttribute('comment_count', SnagComment::where('snag_id', $lt->id)->count());
+
+                // Get comment count for this snag
+                $commentCount = SnagComment::where('snag_id', $lt->id)->count();
+                $lt->setAttribute('comment_count', $commentCount);
+
                 return $lt;
             });
 
-        $project_employees = Employee::whereIn('employee.id', $project->assigned_to)
-            ->select('id', 'name')
+        $project_employees = Employee::whereIn('employee.id', $project->assigned_to)->select('id', 'name')
             ->get();
 
         $pro_progress_stage = DB::table('progress_stage')->where('pro_id', $project_id)->orderBy('id')->get();
 
         $pro_progress_tab = DB::table('progress_activity')->where('pro_id', $project_id)
-            ->selectRaw('stage, count(activity) as sub_count')
-            ->groupBy('stage')->get()
-            ->map(function ($item) {
-                $stage_det = DB::table('progress_stage')->where('id', $item->stage)
-                    ->select('id', 'stage', 'sc_start', 'sc_end')
-                    ->first();
+            ->selectRaw('stage,count(activity) as sub_count')
+            ->groupBy('stage')->get()->map(function ($item) {
 
-                $item->stage_name = $stage_det->stage ?? null;
-                $item->sc_start = $stage_det->sc_start ?? null;
-                $item->sc_end = $stage_det->sc_end ?? null;
+                $stage_det = DB::table('progress_stage')->where('id', $item->stage)->select('id', 'stage', 'sc_start', 'sc_end')->first();
+
+                $item->stage_name = $stage_det->stage;
+                $item->sc_start = $stage_det->sc_start;
+                $item->sc_end = $stage_det->sc_end;
 
                 $act_id = DB::table('progress_activity')->where('stage', $item->stage)->pluck('id');
+
+                $check_status1 = DB::table('activity_work')->whereIn('import_id', $act_id)->exists();
 
                 $check_status2 = DB::table('activity_work')->whereIn('import_id', $act_id)->where('cat', 'block')->count();
 
@@ -609,31 +776,14 @@ class ProjectController extends Controller
         $material = Activity_work::where('pro_id', $project_id)->pluck('id');
 
         $act_mat = Activity_material::whereIn('act_id', $material)
-            ->selectRaw('category, SUM(qty) as total, unit')
+            ->selectRaw('category, SUM(qty) as total,unit')
             ->groupBy('category', 'unit')
-            ->get();
+            ->get()
+            ->map(function ($item) {
+                return $item;
+            });
 
-        return view('projects.profile', compact(
-            'project',
-            'surveys',
-            'employees',
-            'ent_surveys',
-            'drawings',
-            'ent_drawings',
-            'rejected_ent_drawings',
-            'tasks',
-            'qcs',
-            'qc_checklists',
-            'ent_qcs',
-            'snags',
-            'ent_snags',
-            'project_employees',
-            'project_id',
-            'pro_docs',
-            'pro_progress_stage',
-            'pro_progress_tab',
-            'act_mat'
-        ));
+        return view('projects.profile', compact('project', 'surveys', 'employees', 'ent_surveys', 'drawings', 'ent_drawings', 'rejected_ent_drawings', 'tasks', 'qcs', 'qc_checklists', 'ent_qcs', 'snags', 'ent_snags', 'project_employees', 'project_id', 'pro_docs', 'pro_progress_stage', 'pro_progress_tab', 'act_mat'));
     }
 
     private function getActive2DFloorPlanDrawings($projectId)
@@ -1153,7 +1303,6 @@ class ProjectController extends Controller
             if ($task) {
                 $task->update($data);
             }
-
         } else {
 
             // ➕ Create Task

@@ -59,17 +59,12 @@ class TaskController extends Controller
                         // ✅ Completed only if both are pending
                     } elseif ($item->status === 'pending' && $taskClose && $taskClose->status === 'pending') {
                         $task_status = 'Completed';
-
-
                     } elseif ($item->status === 'completed') {
                         $task_status = 'Completed';
-
                     } elseif ($taskClose && in_array($taskClose->status, ['completed', 'closed'])) {
                         $task_status = 'Completed';
-
                     } elseif ($taskClose && $taskClose->status == 'pending') {
                         $task_status = 'Pending';
-
                     } elseif ($item->end_timestamp && now()->gt(\Carbon\Carbon::parse($item->end_timestamp))) {
                         $task_status = 'Pending';
                     }
@@ -229,32 +224,26 @@ class TaskController extends Controller
                     $task->custom_status = 'Approved';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'approved';
-
                 } elseif ($task->status === 'pending' && $taskClose && $taskClose->status === 'pending') {
                     $task->custom_status = 'Completed'; // ✅ special condition
                     $task->status_class = 'text-success';
                     $task->status_filter = 'completed';
-
                 } elseif ($task->status === 'completed') {
                     $task->custom_status = 'Completed';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'completed';
-
                 } elseif ($taskClose && in_array($taskClose->status, ['completed', 'closed'])) {
                     $task->custom_status = 'Completed';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'completed';
-
                 } elseif ($taskClose && $taskClose->status === 'pending') {
                     $task->custom_status = 'Pending';
                     $task->status_class = 'text-danger';
                     $task->status_filter = 'pending';
-
                 } elseif ($endDateTime && $currentDateTime->greaterThan($endDateTime)) {
                     $task->custom_status = 'Pending';
                     $task->status_class = 'text-danger';
                     $task->status_filter = 'pending';
-
                 } else {
                     $task->custom_status = 'New';
                     $task->status_class = 'text-primary';
@@ -287,32 +276,26 @@ class TaskController extends Controller
                     $task->custom_status = 'Approved';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'approved';
-
                 } elseif ($task->status === 'pending' && $taskClose && $taskClose->status === 'pending') {
                     $task->custom_status = 'Completed';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'completed';
-
                 } elseif ($task->status === 'completed') {
                     $task->custom_status = 'Completed';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'completed';
-
                 } elseif ($taskClose && in_array($taskClose->status, ['completed', 'closed'])) {
                     $task->custom_status = 'Completed';
                     $task->status_class = 'text-success';
                     $task->status_filter = 'completed';
-
                 } elseif ($taskClose && $taskClose->status === 'pending') {
                     $task->custom_status = 'Pending';
                     $task->status_class = 'text-danger';
                     $task->status_filter = 'pending';
-
                 } elseif ($endDateTime && $currentDateTime->greaterThan($endDateTime)) {
                     $task->custom_status = 'Pending';
                     $task->status_class = 'text-danger';
                     $task->status_filter = 'pending';
-
                 } else {
                     $task->custom_status = 'New';
                     $task->status_class = 'text-primary';
@@ -349,6 +332,7 @@ class TaskController extends Controller
         $projects = Project::all();
         return view('task.create', compact('employees', 'categories', 'sub_categories', 'projects'));
     }
+
     public function task_close_store(Request $req)
     {
         $fileName = null;
@@ -934,6 +918,23 @@ class TaskController extends Controller
             ->orderBy('created_at', 'desc')
             ->get()
             ->map(function ($lt) {
+                // 🔹 Force project data when project_id = 1
+                if ($lt->project_id == 1) {
+
+                    $project = new Project();
+                    $project->forceFill([
+                        'id' => 1,
+                        'project_name' => 'General',
+                    ]);
+
+                    $project->exists = true;
+
+                    // 🔑 Force id visibility
+                    $project->makeVisible('id');
+
+                    $lt->setRelation('project', $project);
+                }
+
                 // Format created_at
                 $lt->cr_at = \Carbon\Carbon::parse($lt->created_at)->format('Y-m-d H:i:s');
 
@@ -971,7 +972,6 @@ class TaskController extends Controller
                     } elseif ($taskClose->status == 'pending') {
                         $task_status = 'Pending';
                     }
-
                 } else {
                     // No task_close record exists - check if task is overdue
                     if ($lt->end_timestamp) {
@@ -997,6 +997,65 @@ class TaskController extends Controller
     }
 
 
+    // public function assign_to_me(Request $req)
+    // {
+    //     $tasks = Task::with(['project:id,project_name', 'user:id,name'])
+    //         ->where('assigned_to', auth()->user()->id)
+    //         ->orderBy('created_at', 'desc')
+    //         ->get()
+    //         ->map(function ($lt) {
+    //             // Format created_at
+    //             $lt->setAttribute('cr_at', $lt->created_at
+    //                 ? $lt->created_at->format('Y-m-d H:i:s')
+    //                 : null);
+
+    //             // File path
+    //             $lt->setAttribute(
+    //                 'file_attachment',
+    //                 $lt->file_attachment
+    //                     ? env('AWS_URL') . $lt->file_attachment
+    //                     : null
+    //             );
+    //             // Default status
+    //             $task_status = 'New';
+
+    //             // Get latest task_close record
+    //             $taskClose = \DB::table('task_close')
+    //                 ->where('request_to_task', $lt->id)
+    //                 ->orderBy('id', 'desc')
+    //                 ->first();
+
+    //             if ($taskClose) {
+    //                 if ($taskClose->status == 'approved') {
+    //                     $task_status = 'Approved';
+
+    //                     // ✅ Completed only if task.status == pending && task_close.status == pending
+    //                 } elseif ($lt->status === 'completed') {
+    //                     $task_status = 'Completed';
+    //                 }
+    //             } else {
+    //                 // If not closed → check date
+    //                 if ($lt->end_timestamp) {
+    //                     $endDate = \Carbon\Carbon::parse($lt->end_timestamp)->toDateString();
+    //                     $today = now()->toDateString();
+
+    //                     if ($today > $endDate) {
+    //                         $task_status = 'Pending';
+    //                     } else {
+    //                         $task_status = 'New';
+    //                     }
+    //                 }
+    //             }
+
+    //             $lt->setAttribute('task_status', $task_status);
+
+    //             return $lt;
+    //         });
+
+    //     return response()->json(['status' => 'success', 'data' => $tasks]);
+    // }
+
+
     public function assign_to_me(Request $req)
     {
         $tasks = Task::with(['project:id,project_name', 'user:id,name'])
@@ -1004,6 +1063,34 @@ class TaskController extends Controller
             ->orderBy('created_at', 'desc')
             ->get()
             ->map(function ($lt) {
+
+                // 🔹 Force project data when project_id = 1
+                // if ($lt->project_id == 1 && !$lt->project) {
+                //     $lt->setRelation(
+                //         'project',
+                //         new \App\Models\Project([
+                //             'id' => 1,
+                //             'project_name' => 'General',
+                //         ])
+                //     );
+                // }
+
+                if ($lt->project_id == 1) {
+
+                    $project = new Project();
+                    $project->forceFill([
+                        'id' => 1,
+                        'project_name' => 'General',
+                    ]);
+
+                    $project->exists = true;
+
+                    // 🔑 Force id visibility
+                    $project->makeVisible('id');
+
+                    $lt->setRelation('project', $project);
+                }
+
                 // Format created_at
                 $lt->setAttribute('cr_at', $lt->created_at
                     ? $lt->created_at->format('Y-m-d H:i:s')
@@ -1013,8 +1100,8 @@ class TaskController extends Controller
                 $lt->setAttribute(
                     'file_attachment',
                     $lt->file_attachment
-                    ? env('AWS_URL') . $lt->file_attachment
-                    : null
+                        ? env('AWS_URL') . $lt->file_attachment
+                        : null
                 );
                 // Default status
                 $task_status = 'New';
@@ -1032,14 +1119,12 @@ class TaskController extends Controller
                         // ✅ Completed only if task.status == pending && task_close.status == pending
                     } elseif ($lt->status === 'completed') {
                         $task_status = 'Completed';
-
-
                     }
                 } else {
                     // If not closed → check date
                     if ($lt->end_timestamp) {
                         $endDate = \Carbon\Carbon::parse($lt->end_timestamp)->toDateString();
-                        $today = now()->toDateString();
+                        $today   = now()->toDateString();
 
                         if ($today > $endDate) {
                             $task_status = 'Pending';
@@ -1047,7 +1132,6 @@ class TaskController extends Controller
                             $task_status = 'New';
                         }
                     }
-
                 }
 
                 $lt->setAttribute('task_status', $task_status);
@@ -1116,6 +1200,4 @@ class TaskController extends Controller
             return response()->json(['status' => $e->getMessage()]);
         }
     }
-
-
 }
